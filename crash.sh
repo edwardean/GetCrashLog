@@ -29,7 +29,9 @@ cp -R *.dSYM tmp.app.dSYM
 
 cp *.crash tmp.crash
 
-sleep 1
+mdimport $1
+
+sleep 5
 
 export DEVELOPER_DIR="/Applications/$xcode_name/Contents/Developer"
 /Applications/$xcode_name/Contents/SharedFrameworks/DTDeviceKitBase.framework/Versions/A/Resources/symbolicatecrash tmp.crash tmp.app.dSYM > crash.log
@@ -38,4 +40,6 @@ sleep 1
 
 rm -Rf tmp.*
 rm -Rf Payload
-#rm -Rf *.app
+rm -Rf *.app
+
+echo "Done"
