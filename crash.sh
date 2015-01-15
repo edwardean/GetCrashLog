@@ -1,10 +1,10 @@
-#首先把crash文件、ipa、dsym放到同一文件夹，之后跑此脚本+文件夹地址，生成后的n.crash即为解析后的crash文件
+#首先把crash文件、ipa、dsym放到同一文件夹，之后跑此脚本+文件夹地址，生成后的crash.log即为解析后的crash文件
 #
 
 xcode_name="Xcode.app"
 
 if [ "$1" = "" ]; then
-    echo "首先把crash文件、ipa、dsym放到同一文件夹，之后跑此脚本+文件夹地址，生成后的n.crash即为解析后的crash文件"
+    echo "首先把crash文件、ipa、dsym放到同一文件夹，之后跑此脚本+文件夹地址，生成后的crash.log即为解析后的crash文件"
     echo "eg:"
     echo "bash crash.sh ~/Desktop/crash"
     
