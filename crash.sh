@@ -21,25 +21,27 @@ fi
 
 cd $1
 
-cp *.ipa tmp.zip
+mkdir tmp
+
+cd tmp
+
+cp -R ../*.dSYM tmp.app.dSYM
+cp ../*.crash tmp.crash
+cp ../*.ipa tmp.zip
+
 unzip tmp.zip
 cp -R Payload/*.app .
-
-cp -R *.dSYM tmp.app.dSYM
-
-cp *.crash tmp.crash
 
 mdimport $1
 
 sleep 5
 
 export DEVELOPER_DIR="/Applications/$xcode_name/Contents/Developer"
-/Applications/$xcode_name/Contents/SharedFrameworks/DTDeviceKitBase.framework/Versions/A/Resources/symbolicatecrash tmp.crash tmp.app.dSYM > crash.log
+/Applications/$xcode_name/Contents/SharedFrameworks/DTDeviceKitBase.framework/Versions/A/Resources/symbolicatecrash tmp.crash tmp.app.dSYM > ../crash.log
 
 sleep 1
 
-rm -Rf tmp.*
-rm -Rf Payload
-rm -Rf *.app
+cd .. 
+rm -Rf tmp
 
 echo "Done"
